@@ -6,13 +6,14 @@
 using namespace std;
 using namespace N;
 
-namespace N {
+namespace N
+{
     class CustomerNode
     {
     public:
         Customer data;
-        CustomerNode* next;
-        CustomerNode* previous;
+        CustomerNode *next;
+        CustomerNode *previous;
 
         CustomerNode() { ; };
     };
@@ -20,10 +21,11 @@ namespace N {
     class CustomerLinkedList
     {
     private:
-        CustomerNode* head, * tail;
+        CustomerNode *head, *tail;
         int size;
-        CustomerNode* dummy1 = new CustomerNode;
-        CustomerNode* dummy2 = new CustomerNode;
+        CustomerNode *dummy1 = new CustomerNode;
+        CustomerNode *dummy2 = new CustomerNode;
+
     public:
         CustomerLinkedList()
         {
@@ -38,11 +40,11 @@ namespace N {
 
         void add_front(Customer customer)
         {
-            CustomerNode* tmp = new CustomerNode;
+            CustomerNode *tmp = new CustomerNode;
 
             tmp->data = customer;
 
-            CustomerNode* nextCustomerNode = new CustomerNode;
+            CustomerNode *nextCustomerNode = new CustomerNode;
 
             nextCustomerNode = head->next;
             head->next = tmp;
@@ -50,30 +52,33 @@ namespace N {
             tmp->next = nextCustomerNode;
             nextCustomerNode->previous = tmp;
 
-
             /*tmp->next = head;
             head = tmp;*/
             this->size++;
         }
 
-        void display() {
-            CustomerNode* tmp = new CustomerNode;
+        void display()
+        {
+            CustomerNode *tmp = new CustomerNode;
             tmp = head->next;
 
-            while (tmp != tail) {
+            while (tmp != tail)
+            {
                 cout << tmp->data.toString() << endl;
                 tmp = tmp->next;
             }
         }
 
-        string find(string id) {
-            CustomerNode* tmp = new CustomerNode;
+        string find(string id)
+        {
+            CustomerNode *tmp = new CustomerNode;
             tmp = head->next;
 
             while ((tmp->data.getID() != id) && (tmp != NULL))
             {
                 tmp = tmp->next;
-                if (tmp == NULL) {
+                if (tmp == NULL)
+                {
                     return "Cannot find matching item";
                 }
             }
@@ -81,8 +86,9 @@ namespace N {
             return tmp->data.toString();
         }
 
-        string deleteItem(string id) {
-            CustomerNode* tmp = new CustomerNode;
+        string deleteItem(string id)
+        {
+            CustomerNode *tmp = new CustomerNode;
             tmp = head;
 
             if (head->data.getID() == id)
@@ -95,15 +101,16 @@ namespace N {
             while ((tmp->data.getID() != id) && (tmp != NULL))
             {
                 tmp = tmp->next;
-                if (tmp == NULL) {
+                if (tmp == NULL)
+                {
                     return "Cannot find matching item";
                 }
             }
 
-            CustomerNode* prevCustomerNode = new CustomerNode;
+            CustomerNode *prevCustomerNode = new CustomerNode;
             prevCustomerNode = tmp->previous;
 
-            CustomerNode* nextCustomerNode = new CustomerNode;
+            CustomerNode *nextCustomerNode = new CustomerNode;
             nextCustomerNode = tmp->next;
             prevCustomerNode->next = nextCustomerNode;
             nextCustomerNode->previous = prevCustomerNode;
@@ -114,19 +121,21 @@ namespace N {
             return "Successfully deleted";
         }
 
-        void updateCustomer() {
+        void updateCustomer()
+        {
             string id;
             cout << "Enter customer id: ";
             getline(cin, id);
             cout << endl;
 
-            CustomerNode* tmp = new CustomerNode;
+            CustomerNode *tmp = new CustomerNode;
             tmp = head->next;
 
             while ((tmp->data.getID() != id) && (tmp != NULL))
             {
                 tmp = tmp->next;
-                if (tmp == NULL) {
+                if (tmp == NULL)
+                {
                     cout << "Cannot find matching item" << endl;
                     return;
                 }
@@ -142,13 +151,13 @@ namespace N {
 
             cout << "Enter address: ";
             string address;
-            getline(cin, address);           
+            getline(cin, address);
             tmp->data.setAddress(address);
             cout << endl;
 
             cout << "Enter phone: ";
             string phone;
-            getline(cin, phone);           
+            getline(cin, phone);
             tmp->data.setPhone(phone);
             cout << endl;
 
@@ -156,14 +165,16 @@ namespace N {
             cout << tmp->data.toString() << endl;
         }
 
-        bool isEmpty() {
+        bool isEmpty()
+        {
             return this->size == 0;
         }
 
-        int getSize() {
+        int getSize()
+        {
             return this->size;
         }
     };
-}
+} // namespace N
 
 #endif

@@ -9,29 +9,51 @@ using namespace N;
 
 namespace N
 {
-    class Item {
+    class Item
+    {
     public:
-        string getID() {
+        RentalStatus rentalStatus = RentalStatus::AVAILABLE;
+        string getID()
+        {
             return this->id;
         }
 
-        void setID(string id) {
+        void setID(string id)
+        {
             this->id = id;
         }
 
-        void setTitle(string title) {
+        void setTitle(string title)
+        {
             this->title = title;
         }
 
-        void setNoOfCopies(string noOfCopies) {
+        string getTitle()
+        {
+            return this->title;
+        }
+
+        void setNoOfCopies(int noOfCopies)
+        {
             this->noOfCopies = noOfCopies;
         }
 
-        void setRentalFee(string rentalFee) {
+        int getNoOfCopies()
+        {
+            return this->noOfCopies;
+        }
+
+        void setRentalFee(float rentalFee)
+        {
             this->rentalFee = rentalFee;
         }
 
-        Item(string id, string title, string noOfCopies, string rentalFee)
+        float getRentalFee()
+        {
+            return this->rentalFee;
+        }
+
+        Item(string id, string title, int noOfCopies, float rentalFee)
         {
             this->id = id;
             this->title = title;
@@ -41,7 +63,8 @@ namespace N
 
         Item() { ; };
 
-        string toString() { 
+        string toString()
+        {
             /*string item = "Item{ ";
             string item2 = item + "id= " + id + ", ";
             string item3 = item2 + "title= " + title + ", ";
@@ -50,37 +73,44 @@ namespace N
             string item = "";
             item.reserve(1000);
             item = string("Item{ ") + string("id= ") + id + string(", title= ") + title +
-                string(", copies: ") + noOfCopies + string(", rental fee: ") + rentalFee + string("}");          
+                   string(", copies: ") + to_string(noOfCopies) + string(", rental fee: ") + to_string(rentalFee) + string("}");
             return item;
         }
+
     private:
         string id;
         string title;
-        string noOfCopies;
-        string rentalFee;
-        RentalStatus rentalStatus;    
+        float rentalFee;
+        int noOfCopies;
+        LoanType loanType;
     };
 
-    class DVD : public Item {
+    class DVD : public Item
+    {
     private:
         RentalType rentalType;
+
     protected:
         using Item::Item;
     };
 
-    class MovieRecords : public Item {
+    class MovieRecords : public Item
+    {
     private:
         RentalType rentalType;
+
     protected:
         using Item::Item;
     };
 
-    class VideoGames : public Item {
+    class VideoGames : public Item
+    {
     private:
         RentalType rentalType;
+
     protected:
         using Item::Item;
     };
-}
+} // namespace N
 
 #endif

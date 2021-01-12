@@ -4,7 +4,8 @@
 
 using namespace std;
 
-namespace N {
+namespace N
+{
 	enum class RentalType
 	{
 		MOVIERECORDS,
@@ -32,12 +33,12 @@ namespace N {
 		ONE_WEEK
 	};
 
-	enum class CustomerType 
+	enum class CustomerType
 	{
 		GUEST,
 		REGULAR,
 		VIP
 	};
-}
+} // namespace N
 
 #endif

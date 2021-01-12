@@ -2,41 +2,38 @@
 //
 
 #include <iostream>
-#include "Items.h"
+#include "Item.h"
 #include "Customer.h"
 #include "ItemLinkedList.h"
 #include "CustomerLinkedList.h"
-
-
 
 using namespace std;
 using namespace N;
 
 int main()
 {
-    
-    
+
     ItemLinkedList list1;
     cout << "Begin adding list of items" << endl;
     cout << "Below is a new linked list" << endl;
-    
-    Item item3("003", "Book", "4", "10");
-    Item item1("001", "Book", "4", "11");
-    Item item2("002", "Book", "5", "77");
-    Item item4("004", "Book", "5", "12");
-    Item item5("005", "Book", "5", "12");
-      
+
+    Item item3("003", "Book", 4, 10);
+    Item item1("001", "Book", 4, 11);
+    Item item2("002", "Book", 5, 9.99);
+    Item item4("004", "Book", 5, 5.99);
+    Item item5("005", "Book", 5, 6);
+
     list1.add_front(item3);
     list1.add_front(item1);
     list1.add_front(item2);
     list1.add_front(item4);
-    
+
     list1.display();
     cout << list1.find("003") << endl;
     cout << list1.deleteItem("004") << endl;
     list1.add_front(item5);
 
-    cout << "New linked list" << endl;   
+    cout << "New linked list" << endl;
     list1.display();
 
     cout << "Begin adding list of customers" << endl;
@@ -66,4 +63,3 @@ int main()
     list2.display();
     return 0;
 }
-

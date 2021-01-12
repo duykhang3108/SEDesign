@@ -1,18 +1,19 @@
 #include <iostream>
-#include "Items.h"
+#include "Item.h"
 #ifndef ITEMLINKEDLIST_HEADER
 #define ITEMLINKEDLIST_HEADER
 
 using namespace std;
 using namespace N;
 
-namespace N {
+namespace N
+{
     class ItemNode
-    {   
+    {
     public:
         Item data;
-        ItemNode* next;
-        ItemNode* previous;
+        ItemNode *next;
+        ItemNode *previous;
 
         ItemNode() { ; };
     };
@@ -20,13 +21,14 @@ namespace N {
     class ItemLinkedList
     {
     private:
-        ItemNode* head, * tail;
+        ItemNode *head, *tail;
         int size;
-        ItemNode* dummy1 = new ItemNode;
-        ItemNode* dummy2 = new ItemNode;
+        ItemNode *dummy1 = new ItemNode;
+        ItemNode *dummy2 = new ItemNode;
+
     public:
         ItemLinkedList()
-        {         
+        {
             head = dummy1;
             tail = dummy2;
             head->next = tail;
@@ -36,11 +38,11 @@ namespace N {
 
         void add_front(Item item)
         {
-            ItemNode* tmp = new ItemNode;
-            
+            ItemNode *tmp = new ItemNode;
+
             tmp->data = item;
 
-            ItemNode* nextItemNode = new ItemNode;
+            ItemNode *nextItemNode = new ItemNode;
 
             nextItemNode = head->next;
             head->next = tmp;
@@ -52,7 +54,7 @@ namespace N {
 
         void add_last(Item item)
         {
-            ItemNode* tmp = new ItemNode;
+            ItemNode *tmp = new ItemNode;
             tmp->data = item;
             tmp->next = NULL;
 
@@ -68,24 +70,28 @@ namespace N {
             }
         }
 
-        void display() {
-            ItemNode* tmp = new ItemNode;
+        void display()
+        {
+            ItemNode *tmp = new ItemNode;
             tmp = head->next;
 
-            while (tmp != tail) {
+            while (tmp != tail)
+            {
                 cout << tmp->data.toString() << endl;
                 tmp = tmp->next;
             }
         }
 
-        string find(string id) {
-            ItemNode* tmp = new ItemNode;
+        string find(string id)
+        {
+            ItemNode *tmp = new ItemNode;
             tmp = head->next;
 
             while ((tmp->data.getID() != id) && (tmp != NULL))
             {
                 tmp = tmp->next;
-                if (tmp == NULL) {
+                if (tmp == NULL)
+                {
                     return "Cannot find matching item";
                 }
             }
@@ -93,8 +99,9 @@ namespace N {
             return tmp->data.toString();
         }
 
-        string deleteItem(string id) {
-            ItemNode* tmp = new ItemNode;
+        string deleteItem(string id)
+        {
+            ItemNode *tmp = new ItemNode;
             tmp = head;
 
             if (head->data.getID() == id)
@@ -107,15 +114,16 @@ namespace N {
             while ((tmp->data.getID() != id) && (tmp != NULL))
             {
                 tmp = tmp->next;
-                if (tmp == NULL) {
+                if (tmp == NULL)
+                {
                     return "Cannot find matching item";
                 }
             }
 
-            ItemNode* prevItemNode = new ItemNode;
+            ItemNode *prevItemNode = new ItemNode;
             prevItemNode = tmp->previous;
-            
-            ItemNode* nextItemNode = new ItemNode;
+
+            ItemNode *nextItemNode = new ItemNode;
             nextItemNode = tmp->next;
             prevItemNode->next = nextItemNode;
             nextItemNode->previous = prevItemNode;
@@ -126,18 +134,20 @@ namespace N {
             return "Successfully deleted";
         }
 
-        void updateItem() {
+        void updateItem()
+        {
             string id;
             cout << "Enter item id: ";
             getline(cin, id);
 
-            ItemNode* tmp = new ItemNode;
+            ItemNode *tmp = new ItemNode;
             tmp = head->next;
 
             while ((tmp->data.getID() != id) && (tmp != NULL))
             {
                 tmp = tmp->next;
-                if (tmp == NULL) {
+                if (tmp == NULL)
+                {
                     cout << "Cannot find matching item" << endl;
                     return;
                 }
@@ -154,27 +164,29 @@ namespace N {
             cout << "Enter number of copies in stock: ";
             string noOfCopies;
             getline(cin, noOfCopies);
-            tmp->data.setNoOfCopies(noOfCopies);
+            tmp->data.setNoOfCopies(stoi(noOfCopies));
             cout << endl;
 
             cout << "Enter rental fee: ";
             string rentalFee;
             getline(cin, rentalFee);
-            tmp->data.setRentalFee(rentalFee);
+            tmp->data.setRentalFee(stof(rentalFee));
             cout << endl;
 
             cout << "Item updated as follow: " << endl;
             cout << tmp->data.toString() << endl;
         }
 
-        bool isEmpty() {
+        bool isEmpty()
+        {
             return this->size == 0;
         }
 
-        int getSize() {
+        int getSize()
+        {
             return this->size;
         }
     };
-}
+} // namespace N
 
 #endif

@@ -1,14 +1,16 @@
 #include <string>
 #include "ArrayList.h"
-#include "Items.h"
+#include "Item.h"
 #ifndef CUSTOMER_HEADER
 #define CUSTOMER_HEADER
 
 using namespace std;
 using namespace N;
 
-namespace N {
-	class Customer {
+namespace N
+{
+	class Customer
+	{
 	private:
 		string id;
 		string name;
@@ -16,12 +18,13 @@ namespace N {
 		string phone;
 		string customerType;
 		int currentLevel;
-		int maxItemRent;	
+		int maxItemRent;
 		int minItemToPromote = 3;
 		int minLevelToRentUnlimitedItems = 2;
 		int currentItemRentCount;
 
-		void changeMaxItemRent() {
+		void changeMaxItemRent()
+		{
 			if (this->currentLevel >= this->minLevelToRentUnlimitedItems)
 			{
 				this->maxItemRent = 3;
@@ -31,7 +34,8 @@ namespace N {
 	public:
 		Customer() { ; };
 
-		Customer(string id, string name, string address, string phone, string customerType) {
+		Customer(string id, string name, string address, string phone, string customerType)
+		{
 			this->id = id;
 			this->name = name;
 			this->address = address;
@@ -41,8 +45,10 @@ namespace N {
 			checkCustomerType(customerType);
 		}
 
-		void checkCustomerType(string customerType) {
-			if (customerType == "Guest" | customerType == "GUEST") {
+		void checkCustomerType(string customerType)
+		{
+			if (customerType == "Guest" | customerType == "GUEST")
+			{
 				this->currentLevel = 1;
 			}
 
@@ -51,61 +57,72 @@ namespace N {
 				this->currentLevel = 2;
 			}
 
-			if (customerType == "VIP") {
+			if (customerType == "VIP")
+			{
 				this->currentLevel = 3;
 			}
 		}
 
-		string getID() {
+		string getID()
+		{
 			return this->id;
 		}
 
-		string getName() {
+		string getName()
+		{
 			return this->name;
 		}
 
-		string getAddress() {
+		string getAddress()
+		{
 			return this->address;
 		}
 
-		string getPhone() {
+		string getPhone()
+		{
 			return this->phone;
 		}
 
-		void setName(string name) {
+		void setName(string name)
+		{
 			this->name = name;
 		}
 
-		void setID(string id) {
+		void setID(string id)
+		{
 			this->id = id;
 		}
 
-		void setAddress(string address) {
+		void setAddress(string address)
+		{
 			this->address = address;
 		}
 
-		void setPhone(string phone) {
+		void setPhone(string phone)
+		{
 			this->phone = phone;
 		}
 
-		string toString() {
+		string toString()
+		{
 			string item;
 			item.reserve(1000);
 			item = string("Customer{ ") + string("id: ") + id + string(", name: ") + name +
-				string(", address: ") + address + string(", phone: ") + phone + string(", customer type: ") + 
-				customerType + string("}");
+				   string(", address: ") + address + string(", phone: ") + phone + string(", customer type: ") +
+				   customerType + string("}");
 			return item;
 		}
 
-		void promote() {
+		void promote()
+		{
 			if (checkValidPromotion(this->currentLevel, this->currentItemRentCount))
 			{
 				this->currentLevel += 1;
-
 			}
 		}
 
-		bool checkValidPromotion(int currentLevel, int currentItemRent) {
+		bool checkValidPromotion(int currentLevel, int currentItemRent)
+		{
 			if (currentItemRent <= minItemToPromote)
 			{
 				cout << "Customer has not reached the minimum item rent number. Required: %d, current %d /n", minItemToPromote, currentItemRent;
@@ -119,7 +136,9 @@ namespace N {
 			else
 				return true;
 		}
+
+		virtual bool rentItem(Item *item);
 	};
-}
+} // namespace N
 
 #endif

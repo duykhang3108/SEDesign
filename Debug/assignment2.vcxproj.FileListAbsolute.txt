@@ -1,0 +1,2 @@
+E:\Microsoft Visual Studio\Project\assignment2\Debug\assignment2.exe
+E:\Microsoft Visual Studio\Project\assignment2\Debug\assignment2.pdb

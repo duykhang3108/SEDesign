@@ -57,12 +57,14 @@ public:
         }
         if (!found)
         {
-            cout << "Book not found." << endl;
+            cout << "Item not found." << endl;
             return false;
         }
         else
         {
+            cout << "Customer no. " << this->getID() << " has returned " << item->getTitle() << endl;
             this->rentalList[numRented--] = NULL;
+            this->setHistory(this->getHistory() + 1);
             item->setNoOfCopies(item->getNoOfCopies() + 1);
             return true;
         }

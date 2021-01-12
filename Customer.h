@@ -21,7 +21,7 @@ namespace N
 		int maxItemRent;
 		int minItemToPromote = 3;
 		int minLevelToRentUnlimitedItems = 2;
-		int currentItemRentCount;
+		int history;
 
 		void changeMaxItemRent()
 		{
@@ -103,6 +103,16 @@ namespace N
 			this->phone = phone;
 		}
 
+		void setHistory(int history)
+		{
+			this->history = history;
+		}
+
+		int getHistory()
+		{
+			return this->history;
+		}
+
 		string toString()
 		{
 			string item;
@@ -115,7 +125,7 @@ namespace N
 
 		void promote()
 		{
-			if (checkValidPromotion(this->currentLevel, this->currentItemRentCount))
+			if (checkValidPromotion(this->currentLevel, this->history))
 			{
 				this->currentLevel += 1;
 			}
@@ -138,6 +148,7 @@ namespace N
 		}
 
 		virtual bool rentItem(Item *item);
+		virtual bool returnItem(Item *item);
 	};
 } // namespace N
 

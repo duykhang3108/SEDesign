@@ -18,7 +18,7 @@ private:
     Item *rentalList[MAX_RENT];
 
 public:
-    Guest(string id, string name, string address, string phone);
+    Guest(string id, string name, string address, string phone) : Customer(id, name, address, phone){};
 
     bool rentItem(Item *item)
     {

@@ -16,51 +16,32 @@ namespace N
 		string name;
 		string address;
 		string phone;
-		string customerType;
-		int currentLevel;
-		int maxItemRent;
-		int minItemToPromote = 3;
-		int minLevelToRentUnlimitedItems = 2;
+		// string customerType;
+		// int currentLevel;
+		// int maxItemRent;
+		// int minItemToPromote = 3;
+		// int minLevelToRentUnlimitedItems = 2;
 		int history;
 
-		void changeMaxItemRent()
-		{
-			if (this->currentLevel >= this->minLevelToRentUnlimitedItems)
-			{
-				this->maxItemRent = 3;
-			}
-		}
+		// void changeMaxItemRent()
+		// {
+		// 	if (this->currentLevel >= this->minLevelToRentUnlimitedItems)
+		// 	{
+		// 		this->maxItemRent = 3;
+		// 	}
+		// }
 
 	public:
 		Customer() { ; };
 
-		Customer(string id, string name, string address, string phone, string customerType)
+		Customer(string id, string name, string address, string phone)
 		{
 			this->id = id;
 			this->name = name;
 			this->address = address;
 			this->phone = phone;
-			this->maxItemRent = 2;
-			this->customerType = customerType;
-			checkCustomerType(customerType);
-		}
-
-		void checkCustomerType(string customerType)
-		{
-			if (customerType == "Guest" | customerType == "GUEST")
-			{
-				this->currentLevel = 1;
-			}
-
-			if (customerType == "Regular" | customerType == "REGULAR")
-			{
-				this->currentLevel = 2;
-			}
-
-			if (customerType == "VIP")
-			{
-				this->currentLevel = 3;
-			}
+			// this->maxItemRent = 2;
+			// this->customerType = customerType;
 		}
 
 		string getID()
@@ -81,6 +62,11 @@ namespace N
 		string getPhone()
 		{
 			return this->phone;
+		}
+
+		int getHistory()
+		{
+			return this->history;
 		}
 
 		void setName(string name)
@@ -108,44 +94,38 @@ namespace N
 			this->history = history;
 		}
 
-		int getHistory()
-		{
-			return this->history;
-		}
-
 		string toString()
 		{
 			string item;
 			item.reserve(1000);
 			item = string("Customer{ ") + string("id: ") + id + string(", name: ") + name +
-				   string(", address: ") + address + string(", phone: ") + phone + string(", customer type: ") +
-				   customerType + string("}");
+				   string(", address: ") + address + string(", phone: ") + phone + string(", customer type: ");
 			return item;
 		}
 
-		void promote()
-		{
-			if (checkValidPromotion(this->currentLevel, this->history))
-			{
-				this->currentLevel += 1;
-			}
-		}
+		// void promote()
+		// {
+		// 	if (checkValidPromotion(this->currentLevel, this->history))
+		// 	{
+		// 		this->currentLevel += 1;
+		// 	}
+		// }
 
-		bool checkValidPromotion(int currentLevel, int currentItemRent)
-		{
-			if (currentItemRent <= minItemToPromote)
-			{
-				cout << "Customer has not reached the minimum item rent number. Required: %d, current %d /n", minItemToPromote, currentItemRent;
-				return false;
-			}
-			else if (currentLevel == 3)
-			{
-				cout << "Customer has reached the highest customer level: VIP" << endl;
-				return false;
-			}
-			else
-				return true;
-		}
+		// bool checkValidPromotion(int currentLevel, int currentItemRent)
+		// {
+		// 	if (currentItemRent <= minItemToPromote)
+		// 	{
+		// 		cout << "Customer has not reached the minimum item rent number. Required: %d, current %d /n", minItemToPromote, currentItemRent;
+		// 		return false;
+		// 	}
+		// 	else if (currentLevel == 3)
+		// 	{
+		// 		cout << "Customer has reached the highest customer level: VIP" << endl;
+		// 		return false;
+		// 	}
+		// 	else
+		// 		return true;
+		// }
 
 		virtual bool rentItem(Item *item);
 		virtual bool returnItem(Item *item);

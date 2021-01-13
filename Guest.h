@@ -3,7 +3,6 @@
 #include "Item.h"
 #include "Customer.h"
 #include "Enumclass.h"
-#include "ItemLinkedList.h"
 
 #ifndef GUEST_HEADER
 #define GUEST_HEADER
@@ -19,6 +18,8 @@ private:
     Item *rentalList[MAX_RENT];
 
 public:
+    Guest(string id, string name, string address, string phone);
+
     bool rentItem(Item *item)
     {
         if (item->getNoOfCopies() == 0)

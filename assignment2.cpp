@@ -4,6 +4,9 @@
 #include <iostream>
 #include "Item.h"
 #include "Customer.h"
+#include "Guest.h"
+#include "RegularCustomer.h"
+#include "VIPCustomer.h"
 #include "ItemLinkedList.h"
 #include "CustomerLinkedList.h"
 
@@ -38,11 +41,11 @@ int main()
 
     cout << "Begin adding list of customers" << endl;
     CustomerLinkedList list2;
-    Customer customer1("001", "Khang", "address1", "123456", "REGULAR");
-    Customer customer2("002", "Long", "address2", "123456", "VIP");
-    Customer customer3("003", "Nguyen", "address3", "123456", "GUEST");
-    Customer customer4("004", "Nhi", "address4", "123456", "REGULAR");
-    Customer customer5("005", "Kiet", "address5", "123456", "VIP");
+    RegularCustomer customer1("001", "Khang", "address1", "123456");
+    Guest customer2("002", "Long", "address2", "123456");
+    RegularCustomer customer3("003", "Nguyen", "address3", "123456");
+    RegularCustomer customer4("004", "Nhi", "address4", "123456");
+    VIPCustomer customer5("005", "Kiet", "address5", "123456");
 
     list2.add_front(customer1);
     list2.add_front(customer2);
@@ -51,15 +54,17 @@ int main()
 
     list2.display();
 
-    cout << list2.find("002") << endl;
-    cout << list2.deleteItem("001") << endl;
-    list2.add_front(customer5);
+    // cout << list2.find("002") << endl;
+    // cout << list2.deleteItem("001") << endl;
+    // list2.add_front(customer5);
 
-    cout << "New customer list" << endl;
-    list2.display();
+    // cout << "New customer list" << endl;
+    // list2.display();
 
-    list2.updateCustomer();
-    cout << "List with updated customer" << endl;
-    list2.display();
+    // list2.updateCustomer();
+    // cout << "List with updated customer" << endl;
+    // list2.display();
+
+    customer1.rentItem(item3);
     return 0;
 }

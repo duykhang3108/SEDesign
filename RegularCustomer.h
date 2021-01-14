@@ -15,6 +15,7 @@ private:
     ItemLinkedList rentalList;
 
 public:
+    RegularCustomer();
     RegularCustomer(string id, string name, string address, string phone) : Customer(id, name, address, phone){};
 
     bool rentItem(Item item)

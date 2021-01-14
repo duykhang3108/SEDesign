@@ -2,6 +2,7 @@
 #include <string>
 #include "Item.h"
 #include "Customer.h"
+#include "RegularCustomer.h"
 #include "Enumclass.h"
 
 #ifndef GUEST_HEADER
@@ -42,7 +43,7 @@ public:
             return true;
         }
     }
-    bool returnItem(Item *item)
+    bool returnItem(Item *item, CustomerLinkedList list)
     {
         bool found = false;
         for (int i = 0; i < MAX_RENT; i++)
@@ -67,6 +68,14 @@ public:
             this->rentalList[numRented--] = NULL;
             this->setHistory(this->getHistory() + 1);
             item->setNoOfCopies(item->getNoOfCopies() + 1);
+
+            if (this->getHistory() == 3)
+            {
+                list.deleteItem(this->getID());
+                RegularCustomer regCus(this->getID(), this->getName(), this->getAddress(), this->getPhone());
+                list.add_front(regCus);
+            }
+
             return true;
         }
     }

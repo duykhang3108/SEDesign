@@ -99,7 +99,7 @@ namespace N
 			string item;
 			item.reserve(1000);
 			item = string("Customer{ ") + string("id: ") + id + string(", name: ") + name +
-				   string(", address: ") + address + string(", phone: ") + phone + string(", customer type: ");
+				   string(", address: ") + address + string(", phone: ") + phone;
 			return item;
 		}
 

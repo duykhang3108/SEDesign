@@ -33,7 +33,7 @@ public:
             cout << "A guest can only rent a maximum of " << MAX_RENT << " items at a time." << endl;
             return false;
         }
-        if (item->rentalStatus == RentalStatus::AVAILABLE)
+        if (item->getRentalStatus() == RentalStatus::AVAILABLE)
         {
             cout << "Customer no." << this->getID() << " has borrowed " << item->getTitle() << endl;
             cout << "Rental fee: " << item->getRentalFee() << "USD" << endl;

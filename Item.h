@@ -7,7 +7,6 @@ using namespace std;
 class Item
 {
 public:
-    RentalStatus rentalStatus = RentalStatus::AVAILABLE;
     string getID()
     {
         return this->id;
@@ -31,6 +30,10 @@ public:
     void setNoOfCopies(int noOfCopies)
     {
         this->noOfCopies = noOfCopies;
+        if (this->noOfCopies == 0)
+        {
+            this->setRentalStatus(RentalStatus::NOT_AVAILABLE);
+        }
     }
 
     int getNoOfCopies()
@@ -48,6 +51,33 @@ public:
         return this->rentalFee;
     }
 
+    void setRentalStatus(RentalStatus rentalStatus)
+    {
+        this->rentalStatus = rentalStatus;
+    }
+
+    RentalStatus getRentalStatus()
+    {
+        return this->rentalStatus;
+    }
+
+    void setLoanType(LoanType setLoanType)
+    {
+        this->loanType = loanType;
+    }
+
+    string getLoanType()
+    {
+        if (this->loanType == LoanType::ONE_WEEK)
+        {
+            return "one-week";
+        }
+        else if (this->loanType == LoanType::TWO_DAYS)
+        {
+            return "two-day";
+        }
+    }
+
     Item(string id, string title, int noOfCopies, float rentalFee)
     {
         this->id = id;
@@ -63,7 +93,8 @@ public:
         string item = "";
         item.reserve(1000);
         item = string("Item{ ") + string("id= ") + id + string(", title= ") + title +
-               string(", copies: ") + to_string(noOfCopies) + string(", rental fee: ") + to_string(rentalFee) + string("}");
+               string(", copies: ") + to_string(noOfCopies) + string(", rental fee: ") + to_string(rentalFee) +
+               string(", loan type: ") + this->getLoanType() + string("}");
         return item;
     }
 
@@ -72,5 +103,6 @@ private:
     string title;
     float rentalFee;
     int noOfCopies;
+    RentalStatus rentalStatus = RentalStatus::AVAILABLE;
     LoanType loanType;
 };

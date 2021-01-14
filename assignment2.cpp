@@ -17,11 +17,11 @@ int main()
 
     ItemLinkedList itemDatabase;
 
-    Item item3("003", "Book", 4, 10);
-    Item item1("001", "Book", 4, 11);
-    Item item2("002", "Book", 5, 9.99);
-    Item item4("004", "Book", 5, 5.99);
-    Item item5("005", "Book", 5, 6);
+    Item item3("003", "Book", 4, 10, 1);
+    Item item1("001", "Book", 4, 11, 2);
+    Item item2("002", "Book", 5, 9.99, 2);
+    Item item4("004", "Book", 5, 5.99, 1);
+    Item item5("005", "Book", 5, 6, 1);
 
     itemDatabase.add_front(item3);
     itemDatabase.add_front(item1);

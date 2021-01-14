@@ -78,12 +78,20 @@ public:
         }
     }
 
-    Item(string id, string title, int noOfCopies, float rentalFee)
+    Item(string id, string title, int noOfCopies, float rentalFee, int val)
     {
         this->id = id;
         this->title = title;
         this->noOfCopies = noOfCopies;
         this->rentalFee = rentalFee;
+        if (val == 1)
+        {
+            this->loanType = LoanType::ONE_WEEK;
+        }
+        else if (val == 2)
+        {
+            this->loanType = LoanType::TWO_DAYS;
+        }
     }
 
     Item() { ; };

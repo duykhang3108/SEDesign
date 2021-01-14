@@ -98,8 +98,8 @@ namespace N
 		{
 			string item;
 			item.reserve(1000);
-			item = string("Customer{ ") + string("id: ") + id + string(", name: ") + name +
-				   string(", address: ") + address + string(", phone: ") + phone;
+			item = string("Customer{") + string("id: ") + id + string(", name: ") + name +
+				   string(", address: ") + address + string(", phone: ") + phone + "}";
 			return item;
 		}
 

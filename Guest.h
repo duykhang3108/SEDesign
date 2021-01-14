@@ -34,7 +34,7 @@ public:
         }
         if (item->rentalStatus == RentalStatus::AVAILABLE)
         {
-            cout << "Customer no. " << this->getID() << " has borrowed " << item->getTitle() << endl;
+            cout << "Customer no." << this->getID() << " has borrowed " << item->getTitle() << endl;
             cout << "Rental fee: " << item->getRentalFee() << "USD" << endl;
             this->rentalList[numRented] = item;
             numRented++;
@@ -63,7 +63,7 @@ public:
         }
         else
         {
-            cout << "Customer no. " << this->getID() << " has returned " << item->getTitle() << endl;
+            cout << "Customer no." << this->getID() << " has returned " << item->getTitle() << endl;
             this->rentalList[numRented--] = NULL;
             this->setHistory(this->getHistory() + 1);
             item->setNoOfCopies(item->getNoOfCopies() + 1);

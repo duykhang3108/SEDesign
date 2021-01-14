@@ -148,10 +148,13 @@
     <ClInclude Include="CustomerLevelMapping.h" />
     <ClInclude Include="CustomerLinkedList.h" />
     <ClInclude Include="Enumclass.h" />
+    <ClInclude Include="Guest.h" />
     <ClInclude Include="HashTable.h" />
-    <ClInclude Include="Items.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="ItemLinkedList.h" />
     <ClInclude Include="NewList.h" />
+    <ClInclude Include="RegularCustomer.h" />
+    <ClInclude Include="VIPCustomer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

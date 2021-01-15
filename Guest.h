@@ -21,7 +21,7 @@ private:
 
 public:
     Guest(string id, string name, string address, string phone) : Customer(id, name, address, phone){};
-    Guest() : Customer() {;};
+    Guest() : Customer() { ; };
 
     bool rentItem(Item *item)
     {
@@ -44,9 +44,10 @@ public:
             item->setNoOfCopies(item->getNoOfCopies() - 1);
             return true;
         }
-		else {
-			return false;
-		}
+        else
+        {
+            return false;
+        }
     }
     bool returnItem(Item *item)
     {
@@ -77,18 +78,20 @@ public:
             return true;
         }
     }
-    void promote(CustomerLinkedList list) {
+    void promote(CustomerLinkedList list)
+    {
         // check for validity
-        if (this->getHistory() == 3)
+        if (this->getHistory() < 3)
+        {
+            cout << "This customer hasn't meet the requirement to be promoted." << endl;
+        }
+        else
         {
             list.deleteItem(this->getID());
-            RegularCustomer regCus(this->getID(), this->getName(), this->getAddress(), this->getPhone());
-			list.add_front(regCus);
-        } else {
-            cout << "This customer hasn't meet the requirement to be promoted." <<endl;
+            RegularCustomer promotedCus(this->getID(), this->getName(), this->getAddress(), this->getPhone());
+            list.add_front(promotedCus);
         }
     }
 };
 
 #endif
-

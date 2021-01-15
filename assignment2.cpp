@@ -160,6 +160,14 @@ void addDummies()
 	customer2.returnItem(&item4);
 }
 
+void outOfStockItems()
+{
+
+	for (int i = 0; i < itemDatabase.getSize(); i++)
+	{
+		}
+}
+
 void menu()
 {
 	string choice;
@@ -235,6 +243,7 @@ void menu()
 
 		if (choice == "11")
 		{
+			itemDatabase.outOfStockItems();
 			menu();
 		}
 
@@ -335,7 +344,7 @@ Item readItemFile(ifstream &file, string line)
 
 		if (rentType == "DVD" || rentType == "Record")
 		{
-			getline(ss, tempString,',');
+			getline(ss, tempString, ',');
 			rentalFee = stof(tempString);
 			getline(ss, genre);
 			temp.setGenre(genre);

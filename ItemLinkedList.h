@@ -70,6 +70,19 @@ namespace N
             }
         }
 
+        void outOfStockItems()
+        {
+            ItemNode *tmp = new ItemNode;
+            while (tmp != tail)
+            {
+                if (tmp->data.getNoOfCopies() == 0)
+                {
+                    cout << tmp->data.toString() << endl;
+                    tmp = tmp->next;
+                }
+            }
+        }
+
         void saveToItemFile(ofstream &file)
         {
 
@@ -78,7 +91,7 @@ namespace N
 
             while (tmp != tail)
             {
-                file << tmp->data.getID() << "," << tmp->data.getTitle() << "," << tmp->data.getRentType() << "," << tmp->data.getLoanType() << "," << tmp->data.getNoOfCopies() << "," << tmp->data.getRentalFee() << tmp->data.getGenre() <<endl;
+                file << tmp->data.getID() << "," << tmp->data.getTitle() << "," << tmp->data.getRentType() << "," << tmp->data.getLoanType() << "," << tmp->data.getNoOfCopies() << "," << tmp->data.getRentalFee() << tmp->data.getGenre() << endl;
                 tmp = tmp->next;
             }
         }

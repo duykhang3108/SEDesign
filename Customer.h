@@ -2,12 +2,10 @@
 #include "ArrayList.h"
 #include "Item.h"
 
-
 #ifndef CUSTOMER_HEADER
 #define CUSTOMER_HEADER
 
 using namespace std;
-
 
 namespace N
 {

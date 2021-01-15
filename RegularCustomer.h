@@ -54,11 +54,25 @@ public:
         }
         else
         {
-            cout << "Customer no. " << this->getID() << " has returned " << item.getTitle() << endl;
+            cout << "Customer no." << this->getID() << " has returned " << item.getTitle() << endl;
             this->rentalList.deleteItem(item.getID());
             this->setHistory(this->getHistory() + 1);
             item.setNoOfCopies(item.getNoOfCopies() + 1);
             return true;
+        }
+    }
+    void promote(CustomerLinkedList list)
+    {
+        // check for validity
+        if (this->getHistory() < 3)
+        {
+            cout << "This customer hasn't meet the requirement to be promoted." << endl;
+        }
+        else
+        {
+            list.deleteItem(this->getID());
+            VIPCustomer promotedCus(this->getID(), this->getName(), this->getAddress(), this->getPhone());
+            list.add_front(promotedCus);
         }
     }
 };

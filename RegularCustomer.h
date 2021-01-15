@@ -18,8 +18,10 @@ public:
     RegularCustomer();
     RegularCustomer(string id, string name, string address, string phone) : Customer(id, name, address, phone){};
 
-    bool rentItem(Item item)
+    bool rentItem(string id)
     {
+        Item item;
+
         if (item.getNoOfCopies() == 0)
         {
             cout << "No copy of item available for rent." << endl;
@@ -36,8 +38,9 @@ public:
         }
     }
 
-    bool returnItem(Item item)
+    bool returnItem(string id)
     {
+        Item item;
         bool found = false;
         for (int i = 0; i < this->rentalList.getSize(); i++)
         {
@@ -61,6 +64,7 @@ public:
             return true;
         }
     }
+
     void promote(CustomerLinkedList list)
     {
         // check for validity

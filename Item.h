@@ -166,7 +166,8 @@ public:
         {
             this->genre = Genres::ACTION;
         }
-        else{
+        else
+        {
             return;
         }
         return;
@@ -196,7 +197,8 @@ public:
         this->rentalFee = rentalFee;
         this->setRentType(rentT);
         this->setLoanType(loanT);
-        if (rentT=="Record" || rentT == "DVD"){
+        if (rentT == "Record" || rentT == "DVD")
+        {
             this->setGenre(genre);
         }
     }

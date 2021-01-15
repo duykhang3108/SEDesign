@@ -23,30 +23,55 @@ public:
     Guest(string id, string name, string address, string phone) : Customer(id, name, address, phone){};
     Guest() : Customer() { ; };
 
-    bool rentItem(Item *item)
+    bool findItemByID(string id, ItemLinkedList list)
     {
-        if (item->getNoOfCopies() == 0)
+        bool found;
+        Item *item;
+
+        for (int i = 0; i < list.getSize(); i++)
         {
-            cout << "No copy of item available for rent." << endl;
+            if (list.find(id).compare(item->getID()) == 0)
+            {
+                found = true;
+                break;
+            }
+        }
+
+        if (!found)
+        {
+            cout << "There is no item with such ID." << endl;
             return false;
         }
-        if (numRented >= MAX_RENT)
-        {
-            cout << "A guest can only rent a maximum of " << MAX_RENT << " items at a time." << endl;
-            return false;
-        }
-        if (item->getRentalStatus() == RentalStatus::AVAILABLE)
-        {
-            cout << "Customer no." << this->getID() << " has borrowed " << item->getTitle() << endl;
-            cout << "Rental fee: " << item->getRentalFee() << "USD" << endl;
-            this->rentalList[numRented] = item;
-            numRented++;
-            item->setNoOfCopies(item->getNoOfCopies() - 1);
-            return true;
-        }
+
         else
         {
-            return false;
+            if (item->getNoOfCopies() == 0)
+            {
+                cout << "No copy of item available for rent." << endl;
+                return false;
+            }
+            if (this->numRented >= MAX_RENT)
+            {
+                cout << "A guest can only rent a maximum of " << MAX_RENT << " items at a time." << endl;
+                return false;
+            }
+            if (item->getLoanType() == "2-day")
+            {
+                cout << "A guest can't rent a 2-day item." << endl;
+            }
+            if (item->getRentalStatus() == RentalStatus::AVAILABLE)
+            {
+                cout << "Customer no." << this->getID() << " has borrowed " << item->getTitle() << endl;
+                cout << "Rental fee: " << item->getRentalFee() << "USD" << endl;
+                this->rentalList[numRented] = item;
+                numRented++;
+                item->setNoOfCopies(item->getNoOfCopies() - 1);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
     bool returnItem(Item *item)

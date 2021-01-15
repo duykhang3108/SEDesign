@@ -70,19 +70,6 @@ namespace N
             }
         }
 
-        void outOfStockItems()
-        {
-            ItemNode *tmp = new ItemNode;
-            while (tmp != tail)
-            {
-                if (tmp->data.getNoOfCopies() == 0)
-                {
-                    cout << tmp->data.toString() << endl;
-                    tmp = tmp->next;
-                }
-            }
-        }
-
         void saveToItemFile(ofstream &file)
         {
 
@@ -108,21 +95,22 @@ namespace N
             }
         }
 
-        string find(string id)
+        Item find(string id)
         {
             ItemNode *tmp = new ItemNode;
             tmp = head->next;
 
-            while ((tmp->data.getID() != id) && (tmp != NULL))
+            while ((tmp->data.getID() != id) && (tmp != tail))
             {
                 tmp = tmp->next;
-                if (tmp == NULL)
+                if (tmp == tail)
                 {
-                    return "Cannot find matching item";
+                    cout << "No item with such ID." << endl;
+                    return;
                 }
             }
             cout << "Found matching item" << endl;
-            return tmp->data.toString();
+            return tmp->data;
         }
 
         string deleteItem(string id)

@@ -149,23 +149,6 @@ void addDummies()
 	customerDatabase.add_front(customer2);
 	customerDatabase.add_front(customer3);
 	customerDatabase.add_front(customer4);
-
-	customer2.rentItem(&item3);
-	customer2.returnItem(&item3);
-
-	customer2.rentItem(&item4);
-	customer2.returnItem(&item4);
-
-	customer2.rentItem(&item4);
-	customer2.returnItem(&item4);
-}
-
-void outOfStockItems()
-{
-
-	for (int i = 0; i < itemDatabase.getSize(); i++)
-	{
-		}
 }
 
 void menu()

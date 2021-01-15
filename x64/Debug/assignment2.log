@@ -1,1 +1,7 @@
-﻿  assignment2.vcxproj -> D:\SEDesign\x64\Debug\assignment2.exe
+﻿  assignment2.cpp
+d:\minh anh\school\preclass materials\sem c 2020\c++\asm2\sedesign-main\assignment2.cpp(26): warning C4305: 'argument': truncation from 'double' to 'float'
+d:\minh anh\school\preclass materials\sem c 2020\c++\asm2\sedesign-main\assignment2.cpp(27): warning C4305: 'argument': truncation from 'double' to 'float'
+  Customer.cpp
+d:\minh anh\school\preclass materials\sem c 2020\c++\asm2\sedesign-main\customer.cpp(3): error C2653: 'Customer': is not a class or namespace name
+d:\minh anh\school\preclass materials\sem c 2020\c++\asm2\sedesign-main\customer.cpp(9): error C2653: 'Customer': is not a class or namespace name
+  Generating Code...

@@ -3,9 +3,8 @@
 #define ENUM_HEADER
 
 using namespace std;
+using namespace N;
 
-namespace N
-{
 	enum class RentalType
 	{
 		MOVIERECORDS,
@@ -39,6 +38,6 @@ namespace N
 		REGULAR,
 		VIP
 	};
-} // namespace N
+
 
 #endif

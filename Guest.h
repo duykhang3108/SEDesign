@@ -2,6 +2,7 @@
 #include <string>
 #include "Item.h"
 #include "Customer.h"
+#include "CustomerLinkedList.h"
 #include "RegularCustomer.h"
 #include "Enumclass.h"
 
@@ -42,6 +43,9 @@ public:
             item->setNoOfCopies(item->getNoOfCopies() - 1);
             return true;
         }
+		else {
+			return false;
+		}
     }
     bool returnItem(Item *item, CustomerLinkedList list)
     {

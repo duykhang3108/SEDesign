@@ -1,11 +1,13 @@
 #include <string>
 #include "ArrayList.h"
 #include "Item.h"
+
+
 #ifndef CUSTOMER_HEADER
 #define CUSTOMER_HEADER
 
 using namespace std;
-using namespace N;
+
 
 namespace N
 {
@@ -16,7 +18,7 @@ namespace N
 		string name;
 		string address;
 		string phone;
-		int history;
+		int history = 0;
 
 	public:
 		Customer() { ; };

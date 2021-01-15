@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <string>
 #include "Enumclass.h"
@@ -6,6 +8,7 @@ using namespace std;
 
 class Item
 {
+
 public:
     string getID()
     {
@@ -61,7 +64,7 @@ public:
         return this->rentalStatus;
     }
 
-    void setLoanType(LoanType setLoanType)
+    void setLoanType(LoanType loanType)
     {
         this->loanType = loanType;
     }
@@ -76,6 +79,9 @@ public:
         {
             return "two-day";
         }
+		else {
+			return "";
+		}
     }
 
     Item(string id, string title, int noOfCopies, float rentalFee, int val)

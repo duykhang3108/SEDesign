@@ -68,6 +68,10 @@ public:
             return true;
         }
     }
+    void promote(CustomerLinkedList list)
+    {
+        cout << "This customer is already a VIP member." << endl;
+    }
 };
 
 #endif

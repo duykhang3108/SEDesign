@@ -43,11 +43,12 @@ public:
             item->setNoOfCopies(item->getNoOfCopies() - 1);
             return true;
         }
-		else {
-			return false;
-		}
+        else
+        {
+            return false;
+        }
     }
-    bool returnItem(Item *item, CustomerLinkedList list)
+    bool returnItem(Item *item)
     {
         bool found = false;
         for (int i = 0; i < MAX_RENT; i++)
@@ -73,14 +74,21 @@ public:
             this->setHistory(this->getHistory() + 1);
             item->setNoOfCopies(item->getNoOfCopies() + 1);
 
-            if (this->getHistory() == 3)
-            {
-                list.deleteItem(this->getID());
-                RegularCustomer regCus(this->getID(), this->getName(), this->getAddress(), this->getPhone());
-                list.add_front(regCus);
-            }
-
             return true;
+        }
+    }
+    void promote(CustomerLinkedList list)
+    {
+        if (this->getHistory() < 3)
+        {
+            cout << "This customer hasn't met the requirement to be promoted." << endl;
+        }
+        else
+        {
+            list.deleteItem(this->getID());
+            RegularCustomer promotedCus(this->getID(), this->getName(), this->getAddress(), this->getPhone());
+            list.add_front(promotedCus);
+            delete (this);
         }
     }
 };

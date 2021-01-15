@@ -1,13 +1,11 @@
 #include <string>
-#include "ArrayList.h"
 #include "Item.h"
-
+#include "CustomerLinkedList.h"
 
 #ifndef CUSTOMER_HEADER
 #define CUSTOMER_HEADER
 
 using namespace std;
-
 
 namespace N
 {
@@ -92,6 +90,7 @@ namespace N
 
 		virtual bool rentItem(Item *item);
 		virtual bool returnItem(Item *item);
+		virtual void promote(CustomerLinkedList list);
 	};
 } // namespace N
 

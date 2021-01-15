@@ -14,56 +14,53 @@
 using namespace std;
 using namespace N;
 
-Item readItemFile(ifstream&,string);
+Item readItemFile(ifstream &, string);
 
 int main()
 {
 
-    ItemLinkedList itemDatabase;
+	ItemLinkedList itemDatabase;
 
-    Item item3("003", "Book", 4, 10, 1);
-    Item item1("001", "Book", 4, 11, 2);
-    Item item2("002", "Book", 5, 9.99, 2);
-    Item item4("004", "Book", 5, 5.99, 1);
-    Item item5("005", "Book", 5, 6, 1);
+	Item item3("003", "Book", 4, 10, 1);
+	Item item1("001", "Book", 4, 11, 2);
+	Item item2("002", "Book", 5, 9.99, 2);
+	Item item4("004", "Book", 5, 5.99, 1);
+	Item item5("005", "Book", 5, 6, 1);
 
-    itemDatabase.add_front(item3);
-    itemDatabase.add_front(item1);
-    itemDatabase.add_front(item2);
-    itemDatabase.add_front(item4);
+	itemDatabase.add_front(item3);
+	itemDatabase.add_front(item1);
+	itemDatabase.add_front(item2);
+	itemDatabase.add_front(item4);
 
-    itemDatabase.display();
-    cout << itemDatabase.find("003") << endl;
-    cout << itemDatabase.deleteItem("004") << endl;
-    itemDatabase.add_front(item5);
+	itemDatabase.display();
+	cout << itemDatabase.find("003") << endl;
+	cout << itemDatabase.deleteItem("004") << endl;
+	itemDatabase.add_front(item5);
 
-    CustomerLinkedList customerDatabase;
-    RegularCustomer customer1("001", "Khang", "address1", "123456");
-    Guest customer2("002", "Long", "address2", "123456");
-    RegularCustomer customer3("003", "Nguyen", "address3", "123456");
-    RegularCustomer customer4("004", "Nhi", "address4", "123456");
-    VIPCustomer customer5("005", "Kiet", "address5", "123456");
+	CustomerLinkedList customerDatabase;
+	RegularCustomer customer1("001", "Khang", "address1", "123456");
+	Guest customer2("002", "Long", "address2", "123456");
+	RegularCustomer customer3("003", "Nguyen", "address3", "123456");
+	RegularCustomer customer4("004", "Nhi", "address4", "123456");
+	VIPCustomer customer5("005", "Kiet", "address5", "123456");
 
-    customerDatabase.add_front(customer1);
-    customerDatabase.add_front(customer2);
-    customerDatabase.add_front(customer3);
-    customerDatabase.add_front(customer4);
+	customerDatabase.add_front(customer1);
+	customerDatabase.add_front(customer2);
+	customerDatabase.add_front(customer3);
+	customerDatabase.add_front(customer4);
+	customerDatabase.add_front(customer5);
 
-    customer2.rentItem(&item3);
-    customer2.returnItem(&item3, customerDatabase);
+	customer2.rentItem(&item3);
+	customer2.returnItem(&item3);
 
-    customer2.rentItem(&item4);
-    customer2.returnItem(&item4, customerDatabase);
+	customer2.rentItem(&item4);
+	customer2.returnItem(&item4);
 
-    customer2.rentItem(&item4);
-    customer2.returnItem(&item4, customerDatabase);
+	customer2.rentItem(&item4);
+	customer2.returnItem(&item4);
 
-
-	//load the database
-
-		// Create ifstreams
+	// Create ifstreams
 	ifstream itemFile("items.txt");
-	
 
 	//check if file is opened
 	if (!itemFile.is_open())
@@ -91,16 +88,11 @@ int main()
 	//display
 	itemDatabase.display();
 
-
-	
-
-
 	//close file
 	itemFile.close();
 
-    return 0;
+	return 0;
 }
-
 
 Item readItemFile(ifstream &file, string line)
 {

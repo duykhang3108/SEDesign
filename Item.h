@@ -79,9 +79,10 @@ public:
         {
             return "two-day";
         }
-		else {
-			return "";
-		}
+        else
+        {
+            return "";
+        }
     }
 
     Item(string id, string title, int noOfCopies, float rentalFee, int val)

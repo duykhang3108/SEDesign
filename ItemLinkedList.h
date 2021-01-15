@@ -70,6 +70,19 @@ namespace N
             }
         }
 
+        void saveToItemFile(ofstream &file)
+        {
+
+            ItemNode *tmp = new ItemNode;
+            tmp = head->next;
+
+            while (tmp != tail)
+            {
+                file << tmp->data.getID() << "," << tmp->data.getTitle() << "," << tmp->data.getRentType() << "," << tmp->data.getLoanType() << "," << tmp->data.getNoOfCopies() << "," << tmp->data.getRentalFee() << tmp->data.getGenre() <<endl;
+                tmp = tmp->next;
+            }
+        }
+
         void display()
         {
             ItemNode *tmp = new ItemNode;

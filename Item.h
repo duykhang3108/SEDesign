@@ -9,6 +9,16 @@ using namespace std;
 class Item
 {
 
+private:
+    string id;
+    string title;
+    float rentalFee;
+    int noOfCopies;
+    RentType rentType;
+    RentalStatus rentalStatus = RentalStatus::AVAILABLE;
+    LoanType loanType;
+    Genres genre;
+
 public:
     string getID()
     {
@@ -64,20 +74,73 @@ public:
         return this->rentalStatus;
     }
 
-    void setLoanType(LoanType loanType)
+    void setRentType(string type)
     {
-        this->loanType = loanType;
+        if (type == "DVD")
+        {
+            this->rentType = RentType::DVD;
+        }
+        else if (type == "Game")
+        {
+            this->rentType = RentType::VIDEOGAMES;
+        }
+        else if (type == "Record")
+        {
+            this->rentType = RentType::MOVIERECORDS;
+        }
+        return;
     }
 
-    string getLoanType()
+    string getRentType()
     {
-        if (this->loanType == LoanType::ONE_WEEK)
+        if (this->rentType == RentType::DVD)
         {
-            return "one-week";
+            return "DVD";
         }
-        else if (this->loanType == LoanType::TWO_DAYS)
+        else if (this->rentType == RentType::VIDEOGAMES)
         {
-            return "two-day";
+            return "Games";
+        }
+        else if (this->rentType == RentType::MOVIERECORDS)
+        {
+            return "Record";
+        }
+        else
+        {
+            return "Null";
+        }
+    }
+
+    void setLoanType(string type)
+    {
+        if (type == "1-week")
+        {
+            this->loanType = LoanType::ONE_WEEK;
+        }
+        else if (type == "2-day")
+        {
+            this->loanType = LoanType::TWO_DAYS;
+        }
+        return;
+    }
+
+    string getGenre()
+    {
+        if (this->genre == Genres::ACTION)
+        {
+            return ",Action";
+        }
+        else if (this->genre == Genres::HORROR)
+        {
+            return ",Horror";
+        }
+        else if (this->genre == Genres::DRAMA)
+        {
+            return ",Drama";
+        }
+        else if (this->genre == Genres::COMEDY)
+        {
+            return ",Comedy";
         }
         else
         {
@@ -85,19 +148,56 @@ public:
         }
     }
 
-    Item(string id, string title, int noOfCopies, float rentalFee, int val)
+    void setGenre(string type)
+    {
+        if (type == "Horror")
+        {
+            this->genre = Genres::HORROR;
+        }
+        else if (type == "Comedy")
+        {
+            this->genre = Genres::COMEDY;
+        }
+        else if (type == "Dram")
+        {
+            this->genre = Genres::DRAMA;
+        }
+        else if (type == "Action")
+        {
+            this->genre = Genres::ACTION;
+        }
+        else{
+            return;
+        }
+        return;
+    }
+
+    string getLoanType()
+    {
+        if (this->loanType == LoanType::ONE_WEEK)
+        {
+            return "1-week";
+        }
+        else if (this->loanType == LoanType::TWO_DAYS)
+        {
+            return "2-day";
+        }
+        else
+        {
+            return "Null";
+        }
+    }
+
+    Item(string id, string title, int noOfCopies, float rentalFee, string rentT, string loanT, string genre = "")
     {
         this->id = id;
         this->title = title;
         this->noOfCopies = noOfCopies;
         this->rentalFee = rentalFee;
-        if (val == 1)
-        {
-            this->loanType = LoanType::ONE_WEEK;
-        }
-        else if (val == 2)
-        {
-            this->loanType = LoanType::TWO_DAYS;
+        this->setRentType(rentT);
+        this->setLoanType(loanT);
+        if (rentT=="Record" || rentT == "DVD"){
+            this->setGenre(genre);
         }
     }
 
@@ -107,17 +207,9 @@ public:
     {
         string item = "";
         item.reserve(1000);
-        item = string("Item{ ") + string("id= ") + id + string(", title= ") + title +
+        item = string("Item{") + string("id= ") + id + string(", title= ") + title +
                string(", copies: ") + to_string(noOfCopies) + string(", rental fee: ") + to_string(rentalFee) +
-               string(", loan type: ") + this->getLoanType() + string("}");
+               string(", rent type: ") + this->getRentType() + string("}");
         return item;
     }
-
-private:
-    string id;
-    string title;
-    float rentalFee;
-    int noOfCopies;
-    RentalStatus rentalStatus = RentalStatus::AVAILABLE;
-    LoanType loanType;
 };

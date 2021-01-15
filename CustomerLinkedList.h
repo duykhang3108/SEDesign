@@ -1,4 +1,6 @@
 #include <iostream>
+#include "Customer.h"
+
 #ifndef CUSTOMERLINKEDLIST_HEADER
 #define CUSTOMERLINKEDLIST_HEADER
 

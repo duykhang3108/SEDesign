@@ -5,7 +5,7 @@
 using namespace std;
 
 
-	enum class RentalType
+	enum class RentType
 	{
 		MOVIERECORDS,
 		DVD,

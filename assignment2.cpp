@@ -1,6 +1,8 @@
 // assignment2.cpp : This file contains the 'main' function. Program execution begins and ends there.
 
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include "Item.h"
 #include "Customer.h"
 #include "Guest.h"
@@ -11,6 +13,8 @@
 
 using namespace std;
 using namespace N;
+
+Item readItemFile(ifstream&,string);
 
 int main()
 {
@@ -54,5 +58,72 @@ int main()
     customer2.rentItem(&item4);
     customer2.returnItem(&item4, customerDatabase);
 
+
+	//load the database
+
+		// Create ifstreams
+	ifstream itemFile("items.txt");
+	
+
+	//check if file is opened
+	if (!itemFile.is_open())
+	{
+		cerr << "Error opening file" << endl;
+		return 0;
+	}
+
+	string line;
+	Item tempItem;
+
+	//read file
+	while (getline(itemFile, line))
+	{
+		tempItem = readItemFile(itemFile, line);
+		if (line[0] != '#')
+		{
+			itemDatabase.add_front(tempItem);
+		}
+	}
+
+	string line2;
+	Customer temCus;
+
+	//display
+	itemDatabase.display();
+
+
+	
+
+
+	//close file
+	itemFile.close();
+
     return 0;
+}
+
+
+Item readItemFile(ifstream &file, string line)
+{
+	Item temp;
+	float rentalFee = 0;
+	int noOfCopies = 0;
+	string id, title, loanType, rentType, genre, tempString;
+	stringstream ss(line);
+	if (line[0] != '#')
+	{
+		getline(ss, id, ',');
+		getline(ss, title, ',');
+		getline(ss, rentType, ',');
+		getline(ss, loanType, ',');
+		getline(ss, tempString, ',');
+		noOfCopies = stoi(tempString);
+		getline(ss, tempString);
+		rentalFee = stof(tempString);
+
+		temp.setID(id);
+		temp.setTitle(title);
+		temp.setNoOfCopies(noOfCopies);
+		temp.setRentalFee(rentalFee);
+	}
+	return temp;
 }

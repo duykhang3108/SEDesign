@@ -3,7 +3,7 @@
 #define ENUM_HEADER
 
 using namespace std;
-using namespace N;
+
 
 	enum class RentalType
 	{
